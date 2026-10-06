@@ -1,0 +1,1110 @@
+
+/* ========================================
+   SABINA BIRTHDAY EXPERIENCE
+   PREMIUM VISUAL DESIGN
+======================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Nunito:wght@400;500;600;700;800;900&display=swap');
+
+:root {
+    --bg: #100b20;
+    --bg-light: #1d1234;
+    --pink: #ff78b7;
+    --pink-light: #ffc2df;
+    --purple: #a78bfa;
+    --white: #fff8fc;
+    --muted: #c5b8d7;
+    --glass: rgba(255, 255, 255, 0.07);
+    --border: rgba(255, 255, 255, 0.13);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 25px;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'Nunito', sans-serif;
+    overflow-x: hidden;
+}
+
+body.no-scroll {
+    overflow: hidden;
+}
+
+button {
+    font: inherit;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible {
+    outline: 2px solid white;
+    outline-offset: 5px;
+}
+
+::selection {
+    background: var(--pink);
+    color: #170b24;
+}
+
+#mainContent {
+    display: none;
+    overflow: hidden;
+    animation: pageReveal 1s ease both;
+}
+
+#mainContent.visible {
+    display: block;
+}
+
+@keyframes pageReveal {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========================================
+   LOADING SCREEN
+======================================== */
+
+#loadingScreen {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+    background:
+        radial-gradient(
+            ellipse at 50% 40%,
+            rgba(151, 67, 166, 0.23),
+            transparent 55%
+        ),
+        #100b20;
+    transition: opacity 0.8s ease,
+                visibility 0.8s ease;
+}
+
+#loadingScreen.finished {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.loader-content {
+    width: 100%;
+    max-width: 360px;
+    text-align: center;
+}
+
+.loader-heart {
+    font-size: 65px;
+    margin-bottom: 22px;
+    filter: drop-shadow(0 0 25px #ff78b7);
+    animation: heartBeat 1.4s infinite;
+}
+
+@keyframes heartBeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    15% {
+        transform: scale(1.18);
+    }
+    30% {
+        transform: scale(1);
+    }
+    45% {
+        transform: scale(1.1);
+    }
+}
+
+.loader-content h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 55px;
+    font-weight: 400;
+    color: var(--pink-light);
+    margin-bottom: 12px;
+}
+
+.loader-content p {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+.loading-bar {
+    height: 5px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+#loadingProgress {
+    height: 100%;
+    width: 0;
+    border-radius: inherit;
+    background: linear-gradient(
+        90deg,
+        var(--purple),
+        var(--pink),
+        #fff0f7
+    );
+    box-shadow: 0 0 20px var(--pink);
+    transition: width 0.15s linear;
+}
+
+#loadingText {
+    color: #a99abf;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+/* ========================================
+   BACKGROUND EFFECTS
+======================================== */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    background:
+        radial-gradient(
+            circle at 15% 15%,
+            rgba(255, 120, 183, 0.08),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 85% 45%,
+            rgba(167, 139, 250, 0.08),
+            transparent 35%
+        ),
+        linear-gradient(
+            180deg,
+            #100b20,
+            #170d29 50%,
+            #100b20
+        );
+}
+
+.particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ========================================
+   HERO SECTION
+======================================== */
+
+.hero {
+    position: relative;
+    min-height: 100svh;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 100px 22px 110px;
+    isolation: isolate;
+}
+
+.hero-glow {
+    position: absolute;
+    width: min(80vw, 450px);
+    aspect-ratio: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(184, 81, 173, 0.12);
+    filter: blur(90px);
+    border-radius: 50%;
+    z-index: -1;
+    animation: glowPulse 5s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+    0%, 100% {
+        opacity: 0.5;
+        transform: translate(-50%, -50%) scale(0.9);
+    }
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.15);
+    }
+}
+
+.hero-content {
+    width: 100%;
+    max-width: 700px;
+    animation: heroEnter 1.2s ease both;
+}
+
+@keyframes heroEnter {
+    from {
+        opacity: 0;
+        transform: translateY(35px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.small-title,
+.section-label {
+    display: inline-block;
+    color: var(--pink-light);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    margin-bottom: 24px;
+}
+
+.hero h1 {
+    font-size: clamp(38px, 9vw, 76px);
+    font-weight: 900;
+    line-height: 1.2;
+    letter-spacing: -1.8px;
+    margin-bottom: 22px;
+}
+
+.hero h1 span {
+    display: inline-block;
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(53px, 12vw, 100px);
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 1.3;
+    background: linear-gradient(
+        110deg,
+        #fff4fa,
+        #ff8fc6,
+        #c9a5ff,
+        #fff4fa
+    );
+    background-size: 250% auto;
+    color: var(--pink-light);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 6s linear infinite;
+}
+
+@keyframes shimmer {
+    to {
+        background-position: 250% center;
+    }
+}
+
+.hero-description {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.8;
+    margin: 0 auto 32px;
+    max-width: 320px;
+}
+
+.start-button {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 16px 29px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 50px;
+    color: #32112d;
+    font-weight: 900;
+    font-size: 14px;
+    background: linear-gradient(
+        120deg,
+        #ffd2e8,
+        #ff8fc6,
+        #d9baff
+    );
+    background-size: 200% auto;
+    box-shadow:
+        0 8px 30px rgba(255, 120, 183, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    transition: transform 0.25s ease,
+                box-shadow 0.25s ease;
+}
+
+.start-button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(255, 120, 183, 0.4);
+}
+
+.start-button:active {
+    transform: scale(0.97);
+}
+
+.scroll-hint {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #a99abf;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-align: center;
+    animation: floatDown 2s infinite;
+}
+
+.scroll-hint span {
+    display: block;
+    color: var(--pink);
+    font-size: 26px;
+    margin-bottom: 7px;
+}
+
+@keyframes floatDown {
+    0%, 100% {
+        transform: translate(-50%, 0);
+    }
+    50% {
+        transform: translate(-50%, 8px);
+    }
+}
+
+/* ========================================
+   SHARED SECTION STYLES
+======================================== */
+
+section:not(.hero) {
+    position: relative;
+    padding: 85px 20px;
+    text-align: center;
+}
+
+section h2 {
+    font-size: clamp(27px, 6vw, 42px);
+    font-weight: 900;
+    line-height: 1.3;
+    margin-bottom: 22px;
+}
+
+.section-card,
+.final-card,
+.secret-card {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 38px 25px;
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    background: linear-gradient(
+        145deg,
+        rgba(255, 255, 255, 0.09),
+        rgba(255, 255, 255, 0.025)
+    );
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.07);
+}
+
+.card-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 72px;
+    height: 72px;
+    border: 1px solid rgba(255, 120, 183, 0.2);
+    border-radius: 24px;
+    margin: 0 auto 25px;
+    font-size: 34px;
+    background: rgba(255, 120, 183, 0.1);
+    box-shadow: 0 0 35px rgba(255, 120, 183, 0.08);
+}
+
+.section-card h2 {
+    color: var(--pink-light);
+    margin-bottom: 28px;
+}
+
+.message-text {
+    color: #ded4e9;
+    font-size: 14px;
+    line-height: 2;
+}
+
+.message-text p {
+    margin-bottom: 17px;
+}
+
+.message-text .special-text {
+    color: var(--pink-light);
+    font-weight: 800;
+    margin-top: 25px;
+    margin-bottom: 0;
+}
+
+/* ========================================
+   CAKE SECTION
+======================================== */
+
+.cake-section {
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(255, 120, 183, 0.055),
+            transparent 65%
+        );
+}
+
+.cake-section h2 {
+    margin-bottom: 10px;
+}
+
+.cake-instruction {
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 65px;
+}
+
+.cake-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    min-height: 225px;
+    padding-top: 20px;
+    margin-bottom: 35px;
+}
+
+.cake {
+    position: relative;
+    width: min(260px, 75vw);
+    height: 175px;
+    filter: drop-shadow(0 15px 20px rgba(0, 0, 0, 0.25));
+    animation: cakeAppear 1s ease both;
+}
+
+@keyframes cakeAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.cake-body {
+    position: absolute;
+    bottom: 13px;
+    left: 0;
+    width: 100%;
+    height: 105px;
+    border-radius: 10px 10px 20px 20px;
+    background: linear-gradient(
+        90deg,
+        #9e386d,
+        #ec86bb 45%,
+        #c65391
+    );
+    box-shadow:
+        inset 0 8px 12px rgba(255, 255, 255, 0.18),
+        inset 0 -12px 15px rgba(75, 10, 47, 0.15);
+    overflow: hidden;
+}
+
+.cake-top {
+    position: absolute;
+    top: 46px;
+    left: 0;
+    width: 100%;
+    height: 35px;
+    border-radius: 50%;
+    z-index: 2;
+    background: linear-gradient(
+        180deg,
+        #fff0fa,
+        #ffc9e5
+    );
+    border: 2px solid rgba(255, 255, 255, 0.55);
+    box-shadow: inset 0 -5px 8px rgba(210, 92, 156, 0.13);
+}
+
+.cake-cream {
+    position: absolute;
+    top: 74px;
+    left: 0;
+    width: 100%;
+    height: 23px;
+    z-index: 3;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: #fff2fb;
+    font-size: 16px;
+}
+
+.cake-bottom {
+    position: absolute;
+    left: -7px;
+    bottom: 0;
+    width: calc(100% + 14px);
+    height: 27px;
+    border-radius: 50%;
+    z-index: 4;
+    background: linear-gradient(
+        180deg,
+        #ffc5e2,
+        #e987ba
+    );
+    border-bottom: 5px solid #a6447d;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+}
+
+.cake-decoration {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #ffe5f3;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.cake-decoration.one {
+    left: 17%;
+    top: 30%;
+}
+
+.cake-decoration.two {
+    left: 39%;
+    top: 63%;
+}
+
+.cake-decoration.three {
+    left: 65%;
+    top: 27%;
+}
+
+.cake-decoration.four {
+    left: 83%;
+    top: 65%;
+}
+
+/* Candles */
+
+.candle {
+    position: absolute;
+    bottom: 105px;
+    width: 12px;
+    height: 47px;
+    z-index: 5;
+    border-radius: 4px 4px 2px 2px;
+    background: repeating-linear-gradient(
+        135deg,
+        #fff4fa 0 6px,
+        #ff83bd 6px 12px
+    );
+    box-shadow: inset -3px 0 4px rgba(0, 0, 0, 0.12);
+}
+
+.candle-one {
+    left: 26%;
+    height: 43px;
+}
+
+.candle-two {
+    left: calc(50% - 6px);
+    height: 52px;
+}
+
+.candle-three {
+    right: 26%;
+    height: 43px;
+}
+
+.flame {
+    position: absolute;
+    left: 50%;
+    top: -24px;
+    width: 15px;
+    height: 23px;
+    transform: translateX(-50%);
+    transform-origin: 50% 100%;
+    border-radius: 50% 50% 45% 45%;
+    background: radial-gradient(
+        ellipse at 50% 70%,
+        #fff8c9 0 15%,
+        #ffd36a 35%,
+        #ff8c45 70%,
+        rgba(255, 100, 45, 0) 100%
+    );
+    filter: drop-shadow(0 0 7px #ffbb61);
+    animation: flameFlicker 0.65s infinite alternate;
+    transition: opacity 0.4s, transform 0.4s;
+}
+
+@keyframes flameFlicker {
+    0% {
+        transform: translateX(-50%) rotate(-5deg) scale(1);
+    }
+    100% {
+        transform: translateX(-50%) rotate(5deg) scale(1.1, 0.93);
+    }
+}
+
+.candle.blown .flame {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-12px) scale(0);
+    animation: none;
+}
+
+.cake {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.wish-message {
+    min-height: 35px;
+    color: var(--pink-light);
+    font-size: 14px;
+    font-weight: 800;
+    line-height: 1.8;
+}
+
+/* ========================================
+   WISH CARDS
+======================================== */
+
+.wishes-section > h2 {
+    margin-bottom: 35px;
+}
+
+.wish-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 13px;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.wish-card {
+    padding: 23px 13px;
+    border-radius: 21px;
+    border: 1px solid var(--border);
+    background: var(--glass);
+    transition: transform 0.3s ease,
+                background 0.3s ease,
+                border-color 0.3s ease;
+}
+
+.wish-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 120, 183, 0.08);
+    border-color: rgba(255, 120, 183, 0.35);
+}
+
+.wish-icon {
+    font-size: 31px;
+    margin-bottom: 14px;
+}
+
+.wish-card h3 {
+    font-size: 15px;
+    margin-bottom: 9px;
+    color: var(--pink-light);
+}
+
+.wish-card p {
+    font-size: 11px;
+    line-height: 1.8;
+    color: var(--muted);
+}
+
+/* ========================================
+   FINAL SECTION
+======================================== */
+
+.final-section {
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(167, 139, 250, 0.07),
+            transparent 65%
+        );
+}
+
+.final-card {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.final-decoration {
+    font-size: 35px;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 15px #ffb3dc);
+    animation: heartBeat 2s infinite;
+}
+
+.final-card h2 {
+    font-family: 'Great Vibes', cursive;
+    font-weight: 400;
+    font-size: 48px;
+    color: var(--pink-light);
+    margin-bottom: 10px;
+}
+
+.big-name {
+    font-size: clamp(30px, 8vw, 55px);
+    font-weight: 900;
+    letter-spacing: 5px;
+    margin: 20px 0;
+    background: linear-gradient(
+        100deg,
+        #fff,
+        #ff8fc6,
+        #c3a5ff
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.final-wish {
+    color: var(--pink-light);
+    font-size: 15px;
+    font-weight: 900;
+    line-height: 1.8;
+    margin-bottom: 12px;
+}
+
+.final-card > p:last-of-type {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* ========================================
+   BUTTONS
+======================================== */
+
+.secret-button,
+.close-secret {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    padding: 15px 23px;
+    margin-top: 28px;
+    border: 1px solid rgba(255, 120, 183, 0.4);
+    border-radius: 50px;
+    color: white;
+    background: linear-gradient(
+        120deg,
+        rgba(255, 120, 183, 0.22),
+        rgba(167, 139, 250, 0.18)
+    );
+    box-shadow: 0 8px 30px rgba(255, 120, 183, 0.08);
+    font-size: 13px;
+    font-weight: 900;
+    transition: transform 0.2s, background 0.2s;
+}
+
+.secret-button:hover,
+.close-secret:hover {
+    transform: translateY(-3px);
+    background: rgba(255, 120, 183, 0.2);
+}
+
+.secret-button:active,
+.close-secret:active {
+    transform: scale(0.97);
+}
+
+/* ========================================
+   SECRET MESSAGE
+======================================== */
+
+.secret-section {
+    display: none;
+    padding-top: 30px !important;
+    padding-bottom: 100px !important;
+}
+
+.secret-section.open {
+    display: block;
+    animation: secretReveal 0.7s ease both;
+}
+
+@keyframes secretReveal {
+    from {
+        opacity: 0;
+        transform: translateY(25px) scale(0.97);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.secret-card {
+    border-color: rgba(255, 120, 183, 0.35);
+    background:
+        radial-gradient(
+            circle at top,
+            rgba(255, 120, 183, 0.15),
+            transparent 65%
+        ),
+        rgba(255, 255, 255, 0.035);
+}
+
+.secret-icon {
+    font-size: 43px;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 15px rgba(255, 120, 183, 0.3));
+}
+
+.secret-card > span {
+    display: block;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    color: var(--pink);
+    margin-bottom: 17px;
+}
+
+.secret-card h2 {
+    color: var(--pink-light);
+    font-size: 28px;
+    margin-bottom: 25px;
+}
+
+.secret-message {
+    padding: 24px 17px;
+    border-radius: 18px;
+    background: rgba(0, 0, 0, 0.16);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.secret-message p {
+    font-size: 14px;
+    line-height: 2;
+    color: #f8e7f3;
+    margin-bottom: 13px;
+}
+
+.secret-message p:last-child {
+    margin-bottom: 0;
+}
+
+.secret-message .danger-joke {
+    margin-top: 16px;
+    padding-top: 17px;
+    border-top: 1px solid rgba(255, 120, 183, 0.2);
+    color: var(--pink-light);
+    font-weight: 900;
+}
+
+.close-secret {
+    margin-top: 22px;
+}
+
+/* ========================================
+   CONFETTI
+======================================== */
+
+#confettiContainer {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.confetti-piece {
+    position: absolute;
+    top: -20px;
+    width: 8px;
+    height: 13px;
+    border-radius: 2px;
+    animation: confettiFall var(--fall-duration, 4s) linear forwards;
+    opacity: 0.9;
+}
+
+@keyframes confettiFall {
+    0% {
+        transform: translate3d(0, -10px, 0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translate3d(var(--drift, 30px), 110vh, 0) rotate(800deg);
+        opacity: 0;
+    }
+}
+
+.floating-heart {
+    position: absolute;
+    bottom: -30px;
+    pointer-events: none;
+    animation: heartFloat var(--float-duration, 5s) ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes heartFloat {
+    0% {
+        opacity: 0;
+        transform: translateY(0) rotate(-10deg) scale(0.7);
+    }
+    15% {
+        opacity: 0.85;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-80vh) rotate(25deg) scale(1.3);
+    }
+}
+
+/* ========================================
+   FOOTER
+======================================== */
+
+footer {
+    padding: 35px 20px 40px;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(0, 0, 0, 0.12);
+}
+
+.footer-heart {
+    font-size: 23px;
+    margin-bottom: 12px;
+    animation: heartBeat 2s infinite;
+}
+
+footer p {
+    color: #e7d8f0;
+    font-size: 12px;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+footer span {
+    color: #8e7fa4;
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+======================================== */
+
+@media (min-width: 700px) {
+    .hero {
+        padding-top: 120px;
+        padding-bottom: 120px;
+    }
+
+    section:not(.hero) {
+        padding: 110px 30px;
+    }
+
+    .section-card,
+    .final-card,
+    .secret-card {
+        padding: 55px 45px;
+    }
+
+    .message-text {
+        font-size: 15px;
+    }
+
+    .wish-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 16px;
+    }
+
+    .wish-card {
+        padding: 27px 15px;
+    }
+
+    .wish-card p {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 380px) {
+    .hero h1 {
+        font-size: 35px;
+    }
+
+    .hero h1 span {
+        font-size: 49px;
+    }
+
+    .small-title,
+    .section-label {
+        letter-spacing: 2px;
+        font-size: 9px;
+    }
+
+    .section-card,
+    .final-card,
+    .secret-card {
+        padding: 30px 18px;
+        border-radius: 23px;
+    }
+
+    .wish-grid {
+        gap: 9px;
+    }
+
+    .wish-card {
+        padding: 19px 10px;
+    }
+
+    .secret-card h2 {
+        font-size: 24px;
+    }
+
+    .secret-message p {
+        font-size: 12px;
+    }
+}
+
+/* ========================================
+   REDUCED MOTION ACCESSIBILITY
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
